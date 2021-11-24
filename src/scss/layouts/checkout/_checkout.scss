@@ -69,3 +69,11 @@
         width: $printLayout-widthFixed;
     }
 }
+
+// myfix - added this to provide note in shipping checkout section
+.shipping-note {
+    font-size: 110%;
+    font-weight: 600;
+    margin-bottom: spacing("single");
+    margin-top: -12px;
+}

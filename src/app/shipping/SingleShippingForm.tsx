@@ -142,6 +142,10 @@ class SingleShippingForm extends PureComponent<SingleShippingFormProps & WithLan
                         shippingAddress={ shippingAddress }
                         shouldShowSaveAddress={ shouldShowSaveAddress }
                     />
+                    { /* myfix - added this div to display message */ }
+                    <div className={ 'shipping-note' }>
+                        Please note: Delivery dates are NOT available on Sundays and Holidays
+                    </div>
                     {
                         shouldShowBillingSameAsShipping && <div className="form-body">
                             <BillingSameAsShippingField />

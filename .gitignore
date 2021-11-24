@@ -1,5 +1,8 @@
 node_modules
 build
 coverage
+
+// myfix - added these
+dist
 *.bak
 deploy.sh

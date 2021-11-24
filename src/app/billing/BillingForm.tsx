@@ -58,7 +58,10 @@ class BillingForm extends PureComponent<BillingFormProps & WithLanguageProps & F
         } = this.props;
 
         const shouldRenderStaticAddress = methodId === 'amazonpay';
-        const allFormFields = getFields(values.countryCode);
+        // const allFormFields = getFields(values.countryCode); // original declaration
+        // myfix - this is to remove the custom form field: "Requested Delivery Date" as used in the Shipping section
+        // NOTE: this'll only work if we don't require another customer field :~|
+        const allFormFields = getFields(values.countryCode).filter(({ custom }) => !custom);
         const customFormFields = allFormFields.filter(({ custom }) => custom);
         const hasCustomFormFields = customFormFields.length > 0;
         const editableFormFields = shouldRenderStaticAddress && hasCustomFormFields ? customFormFields : allFormFields;
