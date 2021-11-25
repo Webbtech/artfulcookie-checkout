@@ -15,6 +15,7 @@ function mapFromPhysical(item: PhysicalItem): OrderSummaryItemProps {
         productOptions: (item.options || []).map(option => ({
             testId: 'cart-item-product-option',
             content: `${option.name} ${option.value}`,
+            optionValue: option.value, // myfix - added this to capture options with value of 'No'
         })),
     };
 }

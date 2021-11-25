@@ -3,6 +3,6 @@ build
 coverage
 
 // myfix - added these
-dist
+dist/
 *.bak
 deploy.sh

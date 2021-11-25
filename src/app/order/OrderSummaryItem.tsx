@@ -18,7 +18,10 @@ export interface OrderSummaryItemProps {
 export interface OrderSummaryItemOption {
     testId: string;
     content: ReactNode;
+    optionValue?: string;
 }
+
+type FilteredOptions = OrderSummaryItemOption[];
 
 const OrderSummaryItem: FunctionComponent<OrderSummaryItemProps> = ({
     amount,
@@ -45,7 +48,9 @@ const OrderSummaryItem: FunctionComponent<OrderSummaryItemProps> = ({
                 className="product-options optimizedCheckout-contentSecondary"
                 data-test="cart-item-product-options"
             >
-                { (productOptions || []).map((option, index) =>
+                { /* myfix - replaced next line to include filter function */ }
+                { /* { (productOptions || []).map((option, index) => */ }
+                { filterNoOptions(productOptions || []).map((option, index) =>
                     <li
                         className="product-option"
                         data-test={ option.testId }
@@ -84,5 +89,10 @@ const OrderSummaryItem: FunctionComponent<OrderSummaryItemProps> = ({
         </div>
     </div>
 );
+
+// myfix: added this function to filter options with a value of 'No'
+function filterNoOptions(productOptions: OrderSummaryItemOption[] | []): FilteredOptions {
+    return (productOptions || []).filter(({ optionValue }) => optionValue !== 'No');
+}
 
 export default memo(OrderSummaryItem);
